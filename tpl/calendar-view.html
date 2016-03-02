@@ -1,0 +1,15 @@
+<div id="calendar" >
+    <calendar-controls></calendar-controls>
+    <table class="table table-bordered">
+        <thead class="bg-primary">
+            <tr class="text-center">
+                <td><h4>Lunes</td><td><h4>Martes</h4></td><td><h4>Miercoles</h4></td><td><h4>Jueves</h4></td><td><h4>Viernes</h4></td><td><h4>Sabado</h4></td><td><h4>Domingo</h4></td>
+            </tr>
+        </thead>
+        <tbody >
+            <tr ng-repeat="week in ctrlCalendar.month">
+                <td ng-click="ctrlCalendar.selectDay(day.number)" id="d_{{day.number}}" ng-repeat="day in week" class="text-center {{day.type}}" value="{{day.number}}"><h2 class="onTop">{{day.number}}</h2></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

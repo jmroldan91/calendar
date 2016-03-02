@@ -1,0 +1,17 @@
+<div id="lView" class="col-md-4 col-md-offset-4 col-xs-12">
+    <h2>Inicio de sesión</h2>
+    <p class="text-danger" id="login-msg"></p>
+    <form name="loginform" class="form form-horizontal" ng-submit="ctrlUser.login()">
+        <label for="login">Email o alias</label><small ng-show="!loginform.login.$valid"> (Requerido)</small>
+        <input id="login" name="login" class="form-control" type="mail" ng-model="ctrlUser.user.email" ng-minlength="4"  required/>
+        <label for="pass">Contraseña</label><small ng-show="!loginform.pass.$valid"> (Requerido)</small>
+        <input id="pass" name="pass" class="form-control" type="password" ng-model="ctrlUser.user.pass" ng-minlength="4"  required/>
+        <input class="btn btn-primary" type="submit" value="Entrar" ng-disabled="!loginform.$valid" />
+        <p>Ususario: demo, Contraseña: demo</p>
+    </form>
+</div>
+<hr>
+<div id="logout" class="col-lg-12 hidden">
+    <button ng-click="ctrlUser.logout()" class="btn btn-danger pull-right">Salir</button>
+</div>
+<hr>

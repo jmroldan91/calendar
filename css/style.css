@@ -1,0 +1,39 @@
+.selected{
+    border: 1px solid black !important;
+    background-color: #A4C639;
+}
+.day{
+    cursor: pointer;
+}
+.meses li:first-of-type{
+    display: none;
+}
+input{
+    color: #222 !important;
+}
+#inpYear{
+    width: 90px;
+    background-color: #428bca;
+}
+.list-group-item:hover{
+    background-color: rgba(164, 198, 57, .3);
+}
+.taskDesc{
+    margin-top: 15px;
+    display: none;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    overflow: hidden;
+}
+.inline{
+    display: inline-block;
+}
+.withTask{
+    background-image: url('../img/postit.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+

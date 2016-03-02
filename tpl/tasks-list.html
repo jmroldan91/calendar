@@ -1,0 +1,78 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3>Lista de tareas | <small>{{ctrlCalendar.the_day}}/{{ctrlCalendar.the_month}}/{{ctrlCalendar.the_year}}</small></h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-lg-12" ng-repeat="hour in ctrlCalendar.hours">
+        <h3><p class="bg-primary text-center"> {{hour.v}} </p><button class="btn btn-success" data-toggle="modal" data-target="#insertForm{{hour.h}}" ng-click="ctrlCalendar.setHour(hour.h)">Insertar</button></h3>
+        <div class="list-group">
+          <div id="{{task.id}}" class="list-group-item" 
+            ng-click="ctrlCalendar.showDesc($event)" 
+            ng-dblclick="ctrlCalendar.hideDesc($event)" 
+            ng-repeat="task in ctrlCalendar.tasks";
+            ng-show="hour.h == ctrlCalendar.filterFn(task)">
+            <button ng-click="ctrlCalendar.del(task.id)" class="btn btn-danger del-button"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-primary" ng-click="ctrlCalendar.editTask(task)">{{task.title}} <span>(<b>{{task.idUser}})</b></span></button>
+            <p class="taskDesc">{{task.content}}</p>
+          </div>
+          <!-- Modal insert -->
+          <div class="modal fade" id="insertForm{{hour.h}}" tabindex="-1" role="dialog" aria-labelledby="insertForm">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Nueva tarea</h4>
+                </div>
+                <form id="taskFormInsert" class="form form-horizontal" ng-controller="ctlFormTask as ctlForm" ng-submit="ctlForm.addTask(ctrlCalendar.tasks, ctrlCalendar.activeDay)" >
+                    <div class="modal-body">
+                          <label for="title">Título</label><br>
+                          <input id="title" type="text" name="title" class="form-control" value="" ng-model="ctlForm.task.title"><br>
+                          <label for="content">Descripción</label><br>
+                          <textarea rows="6" id="content" type="text" name="content" class="form-control" ng-model="ctlForm.task.content" value=""></textarea><br>
+                          <input id="id" type="hidden" name="id" value="" ng-model="ctlForm.task.id">
+                    </div>
+                    <div class="modal-footer">
+                      <button id="closeInsert" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button id="insertaTask" type="submit" class="btn btn-primary">Insertar</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal edit -->
+    <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-labelledby="editForm">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modificar tarea</h4>
+          </div>
+          <form id="taskFormedit" class="form form-horizontal" ng-controller="ctlFormTask as ctlForm" ng-submit="ctlForm.setTask(ctrlCalendar.tasks, ctrlCalendar.activeDay)" >
+              <div class="modal-body">
+                    <label for="title">Título</label><br>
+                    <input id="title" type="text" name="title" class="form-control" value="" ng-model="ctlForm.task.title"><br>
+                    <label for="content">Descripción</label><br>
+                    <textarea rows="6" id="content" type="text" name="content" class="form-control" ng-model="ctlForm.task.content" value=""></textarea><br>
+                    <input id="id" type="hidden" name="id" value="" ng-model="ctlForm.task.id">
+                    <input id="idUser" type="hidden" name="idUSer" value="" ng-model="ctlForm.task.idUser">
+              </div>
+              <div class="modal-footer">
+                <button id="closeInsert" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button id="saveTask" type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    
+          
+    
+    
+
+    

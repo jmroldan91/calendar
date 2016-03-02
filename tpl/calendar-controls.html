@@ -1,0 +1,21 @@
+<div class="bg-primary col-lg-12">
+    <center>
+    <div class="btn-group" role="group" aria-label="...">
+        <button ng-click="ctrlCalendar.prev()" class="btn btn-warning">Anterior</button>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Mes
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu meses">
+                <li ng-repeat="mes in ctrlCalendar.months"><button ng-click="ctrlCalendar.setMonth(mes.value)" class="btn btn-block btn-default">{{mes.text}}</button></li>
+            </ul>
+        </div>
+        <button  ng-click="ctrlCalendar.next()" class="btn btn-warning">Siguiente</button>
+    </div>
+    </center>
+</div>
+<div class="bg-primary col-lg-12">
+    <h2 class="text-center">{{ctrlCalendar.months[(ctrlCalendar.the_month)].text}} | <input id="inpYear" type="number" ng-change="ctrlCalendar.setYear(ctrlCalendar.the_year)" ng-model="ctrlCalendar.the_year" min="1900" max="2099"/></h2>
+</div>
+<hr>
